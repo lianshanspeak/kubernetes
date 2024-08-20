@@ -1,0 +1,63 @@
+# k8s集群开机
+
+
+
+脚本
+
+```
+
+@echo off
+ 
+if "%1" == "start" goto startvm
+if "%1" == "stop" goto stopvm
+ 
+:startvm
+echo "start master01"
+vmrun start "G:\k8s\master\master.vmx" nogui
+echo "start master02"
+vmrun start "G:\k8s\node1\node1.vmx" nogui
+echo "start master03"
+vmrun start "G:\k8s\node2\node2.vmx" nogui
+
+echo "start node01"
+vmrun start "G:\k8s\node3\node3.vmx" nogui
+echo "start node02"
+vmrun start "G:\k8s\node2_54\node2_54.vmx" nogui
+
+echo "——————————————虚拟机启动完毕————————————————"
+vmrun list
+ 
+exit
+
+
+:stopvm
+echo "stop master01"
+vmrun stop "G:\k8s\master\master.vmx" soft
+echo "stop master02"
+vmrun stop "G:\k8s\node1\node1.vmx" soft
+echo "stop master03"
+vmrun stop "G:\k8s\node2\node2.vmx" soft
+
+echo "stop node01"
+vmrun stop "G:\k8s\node3\node3.vmx" soft
+echo "stop node02"
+vmrun stop "G:\k8s\node2_54\node2_54.vmx" soft
+
+echo "——————————————虚拟机关闭完毕————————————————"
+vmrun list
+ 
+exit
+```
+
+
+
+设置win环境变量
+
+使用方式
+
+```
+myvm.bat start
+关闭
+myvm.bat stop
+```
+
