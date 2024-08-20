@@ -19,3 +19,7 @@ NAME        READY   STATUS              RESTARTS   AGE
 
 
 基础设置即代码
+
+
+
+kubectl create 
